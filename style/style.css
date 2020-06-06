@@ -1,0 +1,148 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+.body {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.layout {
+    width: 1200px;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.header {
+    height: 200px;
+    line-height: 200px;
+    border: 1px solid white;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    min-height: 300px;
+}
+
+.nav {
+    width: 200px;
+    flex-shrink: 0;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+}
+
+.nav ul {
+    list-style: none;
+    padding: 20px 0 0 20px;
+}
+
+.nav li {
+    padding-bottom: 5px;
+}
+
+.section {
+    width: 100%;
+    position: relative;
+}
+
+.deleter_area {
+    position: absolute;
+    top: 35px;
+    left: 13px;
+}
+
+#delete {
+    margin-left: 10px;
+}
+
+.write_area {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.section_container {
+    width: 100%;
+    flex-shrink: 1;
+    margin-left: -1px;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+}
+
+.section_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+
+.search_area {
+    margin: 20px 0;
+}
+
+.borad {
+    width: 100%;
+}
+
+.post_area {
+    border: 1px solid white;
+    border-width: 1px 0;
+}
+
+.post {
+    display: grid;
+    grid-template-columns: 40px 1fr 40px;
+}
+
+.side {
+    width: 40px;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.side input {
+    margin-top: 3px;
+}
+
+.post_info {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    padding: 10px 0;
+}
+
+.create_date {
+    width: 120px;
+    text-align: center;
+}
+
+.post:not(:last-child) .post_info {
+    border-bottom: 1px solid white;
+}
+
+.page {
+    margin: 20px 0;
+}
+
+.page ul li {
+    padding-left: 20px;
+    text-decoration: none;
+    list-style: none;
+    display: inline;
+}
+
+.page ul li a{
+    text-decoration: none;
+}
+
+.footer {
+    height: 200px;
+    line-height: 200px;
+    text-align: center;
+    border: 1px solid white;
+}
