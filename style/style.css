@@ -188,6 +188,8 @@ a {
         background-color: #1D2228;
         border-bottom: 1px solid #E1E2E2;
         position: fixed;
+        top: 0;
+        left: 0;
     }
 
     .blank {
