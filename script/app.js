@@ -1,10 +1,10 @@
-import * as Controller from "./controller";
-import * as Model from './model'
-import * as View from './view';
+import * as Controller from "./controller.js";
+import * as Model from './model.js'
+import * as View from './view.js';
 
-if(location.pathname === '/~jimmy/') {
+if (location.pathname === '/') {
     const app = new Controller.IndexController(new Model.IndexModel(), new View.IndexView());
 }
-if(location.pathname === '/~jimmy/post.html') {
+if (location.pathname === '/post.html') {
     const app = new Controller.PostController(new Model.PostModel(), new View.PostView)
 }

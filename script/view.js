@@ -1,4 +1,4 @@
-import module from './module'
+import module from './module.js'
 
 class View {
     constructor() {
@@ -6,7 +6,7 @@ class View {
     }
 }
 
-class IndexView extends View{
+class IndexView extends View {
     appendPostsInSection = result => {
         const innerHtmlArray = result.map(e => {
             const innerHtml = `
@@ -28,22 +28,22 @@ class IndexView extends View{
     appendPageList = cnt => {
         const pageElement = document.querySelector('.page');
         pageElement.innerHTML = '';
-    
+
         const ulPageNode = document.createElement('ul');
         const liNode = document.createElement('li');
         const aNode = document.createElement('a');
-        
+
         const baseUrl = `?${ this.query.search_key !== undefined ? `search_key=${this.query.search_key}` : ''}`
         for (let i = 1; i <= Math.ceil(cnt / 10); i++) {
             const liElement = liNode.cloneNode();
             const aElement = aNode.cloneNode();
-            
+
             aElement.textContent = i;
             aElement.setAttribute('href', `${baseUrl}&page=${i}`)
             liElement.appendChild(aElement);
             ulPageNode.appendChild(liElement);
         }
-    
+
         pageElement.appendChild(ulPageNode);
     }
     changeAllCheckBox = () => {
@@ -76,7 +76,7 @@ class PostView extends View {
         const titleElement = inputElement.cloneNode();
         titleElement.setAttribute('type', 'text');
         titleElement.setAttribute('id', 'title');
-        titleElement.setAttribute('value',postData.title);
+        titleElement.setAttribute('value', postData.title);
         formElement.appendChild(titleElement);
         const contentElement = document.createElement('textarea');
         contentElement.id = 'content';
@@ -86,11 +86,11 @@ class PostView extends View {
         submitElement.setAttribute('type', 'submit');
         submitElement.setAttribute('id', 'insert');
         formElement.appendChild(submitElement);
-        
+
         const sectionElement = document.querySelector('.section');
         sectionElement.appendChild(formElement);
     }
-    
+
     updatePost(handler) {
         const submitElement = document.querySelector('input[type="submit"]');
         submitElement.addEventListener('click', () => {
@@ -105,4 +105,7 @@ class PostView extends View {
     }
 }
 
-export {IndexView, PostView};
+export {
+    IndexView,
+    PostView
+};

@@ -1,4 +1,4 @@
-import module from './module'
+import module from './module.js'
 class Controller {
     constructor(model, view) {
         this.model = model;
@@ -39,4 +39,7 @@ class PostController extends Controller {
         alert('수정완료');
     }
 }
-export {IndexController, PostController};
+export {
+    IndexController,
+    PostController
+};
