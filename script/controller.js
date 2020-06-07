@@ -1,4 +1,4 @@
-import module from './module'
+import module from './module.js'
 class Controller {
     constructor(model, view) {
         this.model = model;
@@ -12,6 +12,7 @@ class IndexController extends Controller {
         this.searchItems();
         this.view.changeAllCheckBox();
         this.view.deletePosts(this.handleDeletePosts);
+        this.view.responsiveHeader();
     }
     searchItems = async () => {
         const data = await this.model.getSectionInfo();
@@ -39,4 +40,7 @@ class PostController extends Controller {
         alert('수정완료');
     }
 }
-export {IndexController, PostController};
+export {
+    IndexController,
+    PostController
+};
