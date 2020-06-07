@@ -12,6 +12,7 @@ class IndexController extends Controller {
         this.searchItems();
         this.view.changeAllCheckBox();
         this.view.deletePosts(this.handleDeletePosts);
+        this.view.responsiveHeader();
     }
     searchItems = async () => {
         const data = await this.model.getSectionInfo();

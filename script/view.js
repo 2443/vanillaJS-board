@@ -67,6 +67,23 @@ class IndexView extends View {
             handler(deleteList);
         });
     }
+    responsiveHeader = () => {
+        const changeLocation = 100;
+        let ticking = false,
+            lastTicking = false;
+        const sectionHeaderElement = document.querySelector('.section_header');
+
+        window.addEventListener('scroll', function (e) {
+            lastTicking = ticking;
+            ticking = changeLocation < this.scrollY ? true : false;
+
+            if (lastTicking !== ticking) {
+                sectionHeaderElement.classList.toggle('section_header_position');
+                sectionHeaderElement.nextElementSibling.classList.toggle('blank')
+
+            }
+        });
+    }
 }
 
 class PostView extends View {
