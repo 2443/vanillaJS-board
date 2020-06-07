@@ -8,7 +8,6 @@ class Model {
 }
 class IndexModel extends Model {
     getSectionInfo = () => {
-        console.log(this)
         const result = module.xhr({
             path: '',
             method: 'get',
