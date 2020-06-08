@@ -91,7 +91,6 @@ class IndexView extends View {
     }
     infiniteScroll = (handler) => {
         const eventHandler = () => {
-            console.log(this.endOfresult)
             if (!this.endOfresult && (window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
                 const params = {
                     ...this.query,
