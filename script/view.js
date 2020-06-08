@@ -11,6 +11,7 @@ class IndexView extends View {
         super();
         this.page = 1;
         this.endOfresult = false;
+        this.requesting = false;
     }
     bindPostsInSection = result => {
         const innerHtmlArray = result.map(e => {
@@ -91,11 +92,12 @@ class IndexView extends View {
     }
     infiniteScroll = (handler) => {
         const eventHandler = () => {
-            if (!this.endOfresult && (window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+            if (!this.endOfresult && !this.requesting && (window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
                 const params = {
                     ...this.query,
                     page: this.page + 1
                 }
+                this.requesting = true;
                 handler(params);
             }
         }
@@ -106,16 +108,16 @@ class IndexView extends View {
     appendPostsInSection = (data) => {
         const innerHtmlArray = data.result.map(e => {
             const innerHtml = `
-                <div class="post">
-                <div class="side">
-                <input type="checkbox" class="delete_box" name="delete_box" id="${e.id}">
-                </div>
-                <div class="post_info">
-                <span class="title"><a href="/post.html?id=${e.id}">${e.title}</a></span>
-                <span class="create_date">${e.create_date}</span>
-                </div>
-                <div class="side"></div>
-                </div>`
+            <div class="post">
+            <div class="side">
+            <input type="checkbox" class="delete_box" name="delete_box" id="${e.id}">
+            </div>
+            <div class="post_info">
+            <span class="title"><a href="/post.html?id=${e.id}">${e.title}</a></span>
+            <span class="create_date">${e.create_date}</span>
+            </div>
+            <div class="side"></div>
+            </div>`
             return innerHtml;
         })
         const postArea = document.querySelector('.post_area');
@@ -123,6 +125,7 @@ class IndexView extends View {
         if (data.cnt <= data.result.length + this.page * 10) {
             this.endOfresult = true;
         }
+        this.requesting = false;
         this.page++;
     }
 }
