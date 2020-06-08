@@ -7,11 +7,11 @@ class Model {
 
 }
 class IndexModel extends Model {
-    getSectionInfo = () => {
+    getSectionInfo = (data) => {
         const result = module.xhr({
             path: '',
             method: 'get',
-            data: this.query,
+            data,
         })
         return result;
     }

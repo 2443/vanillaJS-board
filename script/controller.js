@@ -3,6 +3,7 @@ class Controller {
     constructor(model, view) {
         this.model = model;
         this.view = view;
+        this.query = module.queryStringToJson(window.location.search.substring(1));
     }
 }
 
@@ -13,15 +14,20 @@ class IndexController extends Controller {
         this.view.changeAllCheckBox();
         this.view.deletePosts(this.handleDeletePosts);
         this.view.responsiveHeader();
+        this.view.infiniteScroll(this.handleInfiniteScroll);
     }
     searchItems = async () => {
-        const data = await this.model.getSectionInfo();
-        this.view.appendPostsInSection(data.result);
-        this.view.appendPageList(data.cnt);
+        const data = await this.model.getSectionInfo(this.query);
+        this.view.bindPostsInSection(data.result);
+        this.view.bindPageList(data.cnt);
     }
     handleDeletePosts = async (deleteList) => {
         await this.model.deletePosts(deleteList);
         this.searchItems();
+    }
+    handleInfiniteScroll = async (params) => {
+        const data = await this.model.getSectionInfo(params);
+        this.view.appendPostsInSection(data);
     }
 }
 
